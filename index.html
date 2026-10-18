@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXELL MARKET ID - Jual Nokos All Negara & Jasa Bug</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    html, body {
+        height: 100%;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* ===== WELCOME SCREEN ===== */
+    .welcome-screen {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; background: #000;
+        transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+    .welcome-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .bg-video {
+        position: absolute; top: 50%; left: 50%;
+        min-width: 100%; min-height: 100%; width: auto; height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover; z-index: 0;
+        filter: brightness(1.1) contrast(1.05) saturate(1.2);
+        pointer-events: none;
+    }
+
+    .welcome-overlay {
+        position: absolute; inset: 0; z-index: 1;
+        background: radial-gradient(ellipse 65% 55% at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.45) 100%);
+    }
+
+    .welcome-particles {
+        position: absolute; inset: 0; overflow: hidden; z-index: 2; pointer-events: none;
+    }
+    .welcome-particles span {
+        position: absolute; bottom: -10px;
+        width: 3px; height: 3px;
+        background: #fff; border-radius: 50%;
+        box-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.6);
+        animation: floatUp 12s linear infinite;
+        opacity: 0;
+    }
+    .welcome-particles span:nth-child(1)  { left: 8%;  animation-delay: 0s;    }
+    .welcome-particles span:nth-child(2)  { left: 20%; animation-delay: 1.5s;  }
+    .welcome-particles span:nth-child(3)  { left: 33%; animation-delay: 3s;    }
+    .welcome-particles span:nth-child(4)  { left: 45%; animation-delay: 0.8s;  }
+    .welcome-particles span:nth-child(5)  { left: 58%; animation-delay: 2.2s;  }
+    .welcome-particles span:nth-child(6)  { left: 70%; animation-delay: 4s;    }
+    .welcome-particles span:nth-child(7)  { left: 82%; animation-delay: 1s;    }
+    .welcome-particles span:nth-child(8)  { left: 92%; animation-delay: 3.5s;  }
+    .welcome-particles span:nth-child(9)  { left: 15%; animation-delay: 5s;    }
+    .welcome-particles span:nth-child(10) { left: 65%; animation-delay: 6s;    }
+
+    @keyframes floatUp {
+        0%   { bottom: -10px; opacity: 0; transform: translateX(0); }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { bottom: 110%; opacity: 0; transform: translateX(30px); }
+    }
+
+    .welcome-content {
+        position: relative; z-index: 3;
+        text-align: center; padding: 36px 26px; max-width: 500px;
+        animation: welcomeIn 1.2s ease-out;
+        background: rgba(0,0,0,0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    @keyframes welcomeIn {
+        from { opacity: 0; transform: translateY(40px) scale(0.95); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .welcome-badge {
+        display: inline-block; padding: 6px 18px;
+        font-size: 10px; letter-spacing: 3px; font-weight: 700;
+        border: 1px solid rgba(255,255,255,0.5); border-radius: 30px;
+        margin-bottom: 22px; color: #fff;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(10px);
+        animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+        0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0.4); }
+        50%      { box-shadow: 0 0 22px rgba(255,255,255,0.6); }
+    }
+
+    .welcome-brand {
+        font-size: 30px; font-weight: 900; letter-spacing: 4px;
+        color: #fff; margin-bottom: 28px;
+        animation: brandGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes brandGlow {
+        0%, 100% { text-shadow: 0 0 10px #fff, 0 0 28px #fff, 0 0 55px rgba(255,255,255,0.55), 0 2px 10px rgba(0,0,0,0.9); }
+        50%      { text-shadow: 0 0 5px #fff,  0 0 18px #fff, 0 0 38px rgba(255,255,255,0.3), 0 2px 10px rgba(0,0,0,0.9); }
+    }
+
+    .welcome-greeting {
+        font-size: 19px; font-weight: 600; color: #fff;
+        margin-bottom: 12px; letter-spacing: 0.5px; line-height: 1.4;
+        text-shadow: 0 2px 10px rgba(0,0,0,1);
+    }
+    .welcome-greeting #clockEmoji {
+        display: inline-block;
+        animation: emojiWiggle 2s ease-in-out infinite;
+    }
+    @keyframes emojiWiggle {
+        0%, 100% { transform: rotate(-8deg); }
+        50%      { transform: rotate(8deg); }
+    }
+
+    .welcome-message {
+        font-size: 14px; color: #f0f0f0; margin-bottom: 30px;
+        line-height: 1.7; letter-spacing: 0.3px;
+        text-shadow: 0 2px 10px rgba(0,0,0,1);
+    }
+    .welcome-message strong {
+        color: #fff; font-weight: 800;
+        text-shadow: 0 0 12px rgba(255,255,255,0.9), 0 2px 10px rgba(0,0,0,1);
+    }
+
+    .welcome-clock {
+        display: inline-block;
+        font-family: 'Courier New', monospace;
+        font-size: 20px; font-weight: 700; letter-spacing: 5px;
+        color: #fff; padding: 10px 26px; border-radius: 12px;
+        background: rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.35);
+        margin-bottom: 32px;
+        text-shadow: 0 0 12px rgba(255,255,255,0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: inset 0 0 15px rgba(255,255,255,0.08);
+    }
+
+    .welcome-btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        gap: 10px; padding: 16px 40px;
+        font-size: 13px; font-weight: 900; letter-spacing: 2.5px;
+        color: #000; background: #fff;
+        border: none; border-radius: 50px; cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 0 20px rgba(255,255,255,0.7), 0 0 45px rgba(255,255,255,0.35);
+    }
+    .welcome-btn:hover {
+        box-shadow: 0 0 30px rgba(255,255,255,1), 0 0 65px rgba(255,255,255,0.6);
+        transform: translateY(-3px) scale(1.04);
+    }
+    .welcome-btn:active { transform: scale(0.97); }
+    .welcome-btn i { font-size: 13px; }
+
+    /* ===== MAIN APP ===== */
+    .main-app {
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+        position: relative; height: 100vh; overflow: hidden;
+        background:
+            radial-gradient(ellipse at 15% 15%, #1a1a2e 0%, transparent 55%),
+            radial-gradient(ellipse at 85% 85%, #2e1a1a 0%, transparent 55%),
+            linear-gradient(135deg, #050505 0%, #0a0a15 50%, #050505 100%);
+    }
+    .main-app.show { opacity: 1; visibility: visible; }
+
+    /* ============================================
+       BACKGROUND VIDEOS — 3 LAYER
+    ============================================ */
+    .main-bg-video {
+        position: fixed; top: 50%; left: 50%;
+        min-width: 100%; min-height: 100%; width: auto; height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover; z-index: -3;
+        pointer-events: none;
+        transition: opacity 0.9s ease, filter 0.9s ease;
+        opacity: 0;
+    }
+    .bg-nokos { filter: brightness(1.05) contrast(1.02) saturate(1.15); }
+    .bg-qris  { filter: brightness(0.95) contrast(1.05) saturate(1.3) hue-rotate(180deg); }
+    /* ✅ BUG: nuansa hijau "glitch/hacker" */
+    .bg-bug   { filter: brightness(0.9) contrast(1.15) saturate(1.4) hue-rotate(70deg); }
+
+    /* Toggle per halaman */
+    .main-app[data-page="nokos"] .bg-nokos { opacity: 1; }
+    .main-app[data-page="qris"]  .bg-qris  { opacity: 1; }
+    .main-app[data-page="bug"]   .bg-bug   { opacity: 1; }
+
+    /* BACKGROUND OFF */
+    .main-app.bg-off .main-bg-video { opacity: 0 !important; }
+    .main-app.bg-off .main-overlay { background: radial-gradient(ellipse at center, rgba(10,10,20,0.6) 0%, rgba(0,0,0,0.95) 100%) !important; }
+    .main-app.bg-off .main-grid { opacity: 0.15; }
+
+    /* OVERLAY */
+    .main-overlay {
+        position: fixed; inset: 0; z-index: -2;
+        background:
+            radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.25) 100%),
+            linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.35) 100%);
+        transition: background 0.8s ease;
+    }
+    .main-app[data-page="nokos"] .main-overlay {
+        background:
+            radial-gradient(ellipse at 20% 30%, rgba(255, 160, 60, 0.12) 0%, transparent 55%),
+            radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.25) 100%),
+            linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.35) 100%);
+    }
+    .main-app[data-page="qris"] .main-overlay {
+        background:
+            radial-gradient(ellipse at 75% 30%, rgba(80, 160, 255, 0.18) 0%, transparent 55%),
+            radial-gradient(ellipse at 25% 80%, rgba(160, 80, 255, 0.15) 0%, transparent 55%),
+            radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%),
+            linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.4) 100%);
+    }
+    /* ✅ BUG: tint hijau */
+    .main-app[data-page="bug"] .main-overlay {
+        background:
+            radial-gradient(ellipse at 70% 25%, rgba(80, 255, 120, 0.18) 0%, transparent 55%),
+            radial-gradient(ellipse at 25% 80%, rgba(0, 255, 200, 0.12) 0%, transparent 55%),
+            radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%),
+            linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .main-grid {
+        position: fixed; inset: 0; z-index: -1;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        mask-image: radial-gradient(circle, #000 40%, transparent 80%);
+        -webkit-mask-image: radial-gradient(circle, #000 40%, transparent 80%);
+        opacity: 0.5;
+        transition: opacity 0.4s ease;
+    }
+
+    /* TOMBOL TOGGLE BACKGROUND */
+    .bg-toggle-btn {
+        position: fixed; top: 20px; right: 20px; z-index: 999;
+        display: flex; align-items: center; gap: 8px;
+        padding: 10px 16px;
+        font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+        text-transform: uppercase; color: #fff;
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 30px; cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.15);
+        text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+    }
+    .bg-toggle-btn:hover {
+        background: rgba(255,255,255,0.15);
+        border-color: rgba(255,255,255,0.8);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 22px rgba(255,255,255,0.5);
+        transform: translateY(-2px);
+    }
+    .bg-toggle-btn:active { transform: scale(0.95); }
+    .bg-toggle-btn i { font-size: 13px; transition: transform 0.4s ease; }
+
+    .bg-toggle-btn.on {
+        background: #fff; color: #000; border-color: #fff;
+        box-shadow: 0 0 18px rgba(255,255,255,0.8), 0 0 35px rgba(255,255,255,0.4);
+        text-shadow: none;
+    }
+    .bg-toggle-btn.on i { color: #000; }
+    .bg-toggle-btn.off {
+        background: rgba(255,255,255,0.06);
+        color: #aaa;
+        border-color: rgba(255,255,255,0.2);
+    }
+    .bg-toggle-btn.off i { color: #aaa; }
+    .bg-toggle-btn.off:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+
+    /* HEADER */
+    .header {
+        position: sticky; top: 0; z-index: 20;
+        text-align: center; padding: 22px 15px 12px;
+        background: rgba(0,0,0,0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .header h1 {
+        font-size: 22px; font-weight: 900; letter-spacing: 3px; color: #fff;
+        text-shadow: 0 0 6px #fff, 0 0 14px #fff, 0 0 24px rgba(255,255,255,0.6), 0 2px 10px rgba(0,0,0,1);
+        animation: flicker 3s infinite alternate;
+    }
+    @keyframes flicker {
+        0%, 100% { text-shadow: 0 0 6px #fff, 0 0 14px #fff, 0 0 24px rgba(255,255,255,0.6), 0 2px 10px rgba(0,0,0,1); }
+        50%      { text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 16px rgba(255,255,255,0.4), 0 2px 10px rgba(0,0,0,1); }
+    }
+    .header p {
+        font-size: 11px; letter-spacing: 2px; color: #eee;
+        margin-top: 4px; text-transform: uppercase;
+        text-shadow: 0 2px 8px rgba(0,0,0,1);
+    }
+
+    /* TAB — sekarang ada 3 tombol */
+    .tabs {
+        display: flex; gap: 8px; padding: 14px 15px;
+        background: rgba(0,0,0,0.22);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: sticky; top: 92px; z-index: 19;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tab-btn {
+        flex: 1; padding: 12px 6px;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+        color: #ddd;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 14px; cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 4px; text-transform: uppercase;
+        backdrop-filter: blur(6px);
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+    .tab-btn i { font-size: 15px; }
+    .tab-btn.active {
+        color: #000; background: #fff;
+        box-shadow: 0 0 12px rgba(255,255,255,0.9), 0 0 24px rgba(255,255,255,0.5);
+        border-color: #fff; transform: translateY(-2px);
+        text-shadow: none;
+    }
+    .tab-btn:hover:not(.active) {
+        color: #fff; border-color: rgba(255,255,255,0.35);
+        box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    /* Tint hijau saat tab BUG aktif */
+    .main-app[data-page="bug"] .tab-btn.active {
+        background: #6dff8f;
+        color: #000;
+        box-shadow: 0 0 15px rgba(109,255,143,0.9), 0 0 30px rgba(109,255,143,0.5);
+        border-color: #6dff8f;
+    }
+
+    /* KONTEN */
+    .content-wrapper {
+        height: calc(100vh - 172px);
+        overflow-y: auto;
+        padding: 18px 15px 90px;
+        scroll-behavior: smooth;
+        position: relative; z-index: 1;
+    }
+    .content-wrapper::-webkit-scrollbar { width: 6px; }
+    .content-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    .content-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.5); border-radius: 10px;
+        box-shadow: 0 0 8px rgba(255,255,255,0.7);
+    }
+
+    .page { display: none; animation: fadeIn 0.5s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .info-banner {
+        background: rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px; padding: 14px 16px;
+        margin-bottom: 18px; font-size: 12px; color: #fff;
+        display: flex; align-items: center; gap: 12px;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+    .info-banner i { font-size: 20px; color: #fff; text-shadow: 0 0 10px #fff; }
+
+    /* CARD NOKOS & BUG */
+    .nokos-card {
+        background: rgba(0,0,0,0.18);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px; padding: 16px; margin-bottom: 12px;
+        transition: all 0.35s ease;
+        position: relative; overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nokos-card::before {
+        content: ""; position: absolute;
+        top: 0; left: -100%; width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        transition: left 0.6s ease; pointer-events: none;
+    }
+    .nokos-card:hover::before { left: 100%; }
+    .nokos-card:hover {
+        background: rgba(0,0,0,0.32);
+        border-color: rgba(255,255,255,0.35);
+        box-shadow: 0 0 22px rgba(255,255,255,0.25);
+        transform: translateY(-2px);
+    }
+    /* Hover khusus bug: neon hijau */
+    .main-app[data-page="bug"] .nokos-card:hover {
+        border-color: rgba(109,255,143,0.7);
+        box-shadow: 0 0 25px rgba(109,255,143,0.4);
+    }
+
+    .nokos-header {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .nokos-title {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 15px; font-weight: 800; letter-spacing: 1px; color: #fff;
+        text-shadow: 0 2px 8px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8);
+    }
+    .flag { font-size: 22px; filter: drop-shadow(0 0 8px rgba(255,255,255,0.9)); }
+    .status-badge {
+        font-size: 10px; padding: 4px 10px;
+        border-radius: 20px; font-weight: 700; letter-spacing: 1px;
+        background: rgba(255,255,255,0.95); color: #000;
+        box-shadow: 0 0 12px rgba(255,255,255,0.9);
+    }
+    /* Badge BUG: hijau */
+    .status-badge.bug {
+        background: #6dff8f;
+        box-shadow: 0 0 12px rgba(109,255,143,0.9);
+    }
+    .status-badge.hot {
+        background: #ff5050;
+        color: #fff;
+        box-shadow: 0 0 12px rgba(255,80,80,0.9);
+    }
+
+    .nokos-detail {
+        font-size: 12px; color: #fff; margin-bottom: 12px;
+        display: flex; flex-wrap: wrap; gap: 6px;
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+    .nokos-detail span {
+        background: rgba(0,0,0,0.35);
+        padding: 4px 10px; border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .nokos-footer {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 10px; padding-top: 12px;
+        border-top: 1px dashed rgba(255,255,255,0.15);
+    }
+    .price {
+        font-size: 18px; font-weight: 900; color: #fff;
+        text-shadow: 0 0 12px rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,1);
+    }
+    /* Harga bug: hijau neon */
+    .main-app[data-page="bug"] .price {
+        color: #6dff8f;
+        text-shadow: 0 0 14px rgba(109,255,143,1), 0 0 30px rgba(109,255,143,0.6), 0 2px 8px rgba(0,0,0,1);
+    }
+    .price small {
+        font-size: 10px; color: #eee; font-weight: 500; display: block;
+        margin-bottom: 2px; letter-spacing: 1px;
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+
+    .order-btn {
+        padding: 11px 22px;
+        font-size: 12px; font-weight: 800; letter-spacing: 1.5px;
+        text-transform: uppercase; color: #000; background: #fff;
+        border: none; border-radius: 10px;
+        text-decoration: none; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 18px rgba(255,255,255,0.7);
+    }
+    .order-btn:hover {
+        box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 45px rgba(255,255,255,0.8);
+        transform: scale(1.05);
+    }
+    .order-btn:active { transform: scale(0.96); }
+    /* Tombol order bug: hijau */
+    .main-app[data-page="bug"] .order-btn {
+        background: #6dff8f;
+        box-shadow: 0 0 20px rgba(109,255,143,0.7);
+    }
+    .main-app[data-page="bug"] .order-btn:hover {
+        box-shadow: 0 0 28px rgba(109,255,143,1), 0 0 50px rgba(109,255,143,0.8);
+    }
+
+    /* QRIS */
+    .qris-box {
+        background: rgba(0,0,0,0.18);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px; padding: 24px 18px;
+        text-align: center;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        margin-bottom: 18px;
+    }
+    .qris-title {
+        font-size: 16px; font-weight: 800; letter-spacing: 3px;
+        margin-bottom: 6px;
+        text-shadow: 0 0 12px rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,1);
+    }
+    .qris-sub {
+        font-size: 11px; color: #eee; letter-spacing: 1.5px;
+        margin-bottom: 20px; text-transform: uppercase;
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+    .qr-frame {
+        background: #fff; padding: 14px; border-radius: 18px;
+        display: inline-block;
+        animation: qrPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes qrPulse {
+        0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4); }
+        50%      { box-shadow: 0 0 30px rgba(255,255,255,1),   0 0 55px rgba(255,255,255,0.6); }
+    }
+    .qr-frame img { width: 230px; height: 230px; display: block; object-fit: contain; }
+    .payment-methods {
+        display: flex; justify-content: center; flex-wrap: wrap;
+        gap: 8px; margin-top: 20px;
+    }
+    .payment-methods span {
+        font-size: 11px; font-weight: 700; letter-spacing: 1px;
+        padding: 6px 12px; border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #fff; background: rgba(0,0,0,0.35);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+    }
+
+    .instruction {
+        background: rgba(0,0,0,0.22);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border-radius: 10px; padding: 14px 16px;
+        margin-bottom: 16px; font-size: 12px; color: #fff;
+        line-height: 1.9;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-left: 2px solid rgba(255,255,255,0.6);
+        text-shadow: 0 2px 6px rgba(0,0,0,1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .instruction strong { color: #fff; }
+    /* Instruksi bug: border kiri hijau */
+    .main-app[data-page="bug"] .instruction {
+        border-left: 2px solid #6dff8f;
+    }
+
+    .confirm-btn {
+        display: flex; align-items: center; justify-content: center;
+        gap: 10px; width: 100%; padding: 16px;
+        background: #fff; color: #000; text-decoration: none;
+        font-weight: 900; letter-spacing: 2px; font-size: 13px;
+        border-radius: 14px; transition: all 0.3s ease;
+        box-shadow: 0 0 22px rgba(255,255,255,0.75);
+        text-transform: uppercase;
+    }
+    .confirm-btn:hover {
+        box-shadow: 0 0 30px rgba(255,255,255,1), 0 0 55px rgba(255,255,255,0.7);
+        transform: translateY(-3px);
+    }
+    /* Konfirmasi bug: hijau */
+    .main-app[data-page="bug"] .confirm-btn {
+        background: #6dff8f;
+        box-shadow: 0 0 25px rgba(109,255,143,0.8);
+    }
+    .main-app[data-page="bug"] .confirm-btn:hover {
+        box-shadow: 0 0 35px rgba(109,255,143,1), 0 0 60px rgba(109,255,143,0.7);
+    }
+
+    /* FLOATING WA */
+    .float-wa {
+        position: fixed; bottom: 20px; right: 20px;
+        width: 56px; height: 56px;
+        background: #fff; color: #000;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 24px; text-decoration: none;
+        box-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5);
+        z-index: 100;
+        transition: all 0.3s ease;
+        animation: floatPulse 2s infinite;
+    }
+    @keyframes floatPulse {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.08); }
+    }
+    .float-wa:hover {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 0 30px rgba(255,255,255,1), 0 0 60px rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 400px) {
+        .header h1 { font-size: 18px; letter-spacing: 2px; }
+        .qr-frame img { width: 200px; height: 200px; }
+        .tabs { top: 84px; gap: 6px; padding: 12px 10px; }
+        .tab-btn { font-size: 10px; padding: 10px 4px; letter-spacing: 0; }
+        .tab-btn i { font-size: 13px; }
+        .content-wrapper { height: calc(100vh - 160px); }
+        .welcome-brand { font-size: 24px; letter-spacing: 3px; }
+        .welcome-greeting { font-size: 16px; }
+        .welcome-clock { font-size: 17px; padding: 8px 20px; }
+        .welcome-content { padding: 28px 20px; margin: 15px; }
+        .bg-toggle-btn { top: 14px; right: 14px; padding: 8px 12px; font-size: 10px; letter-spacing: 1px; }
+        .bg-toggle-btn i { font-size: 11px; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- ============ WELCOME SCREEN ============ -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <video autoplay muted loop playsinline preload="auto" class="bg-video" id="welcomeVideo">
+            <source src="https://www.image2url.com/r2/default/videos/1792344047119-611c9f70-6dbf-4d1a-932f-3f676cac9221.mp4" type="video/mp4">
+        </video>
+
+        <div class="welcome-overlay"></div>
+
+        <div class="welcome-particles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="welcome-content">
+            <div class="welcome-badge">✦ PREMIUM SERVICE ✦</div>
+            <h1 class="welcome-brand">AXELL MARKET ID</h1>
+
+            <p class="welcome-greeting">
+                <span id="clockEmoji">👋</span>
+                Halo, Selamat <span id="greetingTime">Malam</span>
+            </p>
+
+            <p class="welcome-message">
+                Axell menyediakan <strong>Nokos & Jasa Bug</strong> untuk anda
+            </p>
+
+            <div class="welcome-clock" id="liveClock">--:--:--</div>
+
+            <button class="welcome-btn" onclick="enterApp()">
+                MASUK KE MENU <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ MAIN APP ============ -->
+    <div id="mainApp" class="main-app" data-page="nokos">
+
+        <button class="bg-toggle-btn on" id="bgToggleBtn" onclick="toggleBg()" title="Aktif/Matikan Background">
+            <i class="fas fa-eye" id="bgToggleIcon"></i>
+            <span id="bgToggleText">BG ON</span>
+        </button>
+
+        <!-- Background videos — 3 layer -->
+        <video autoplay muted loop playsinline preload="auto" class="main-bg-video bg-nokos" id="videoNokos">
+            <source src="https://www.image2url.com/r2/default/videos/1792344330001-985aad39-d848-436e-ba53-9bb00617a884.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline preload="auto" class="main-bg-video bg-qris" id="videoQris">
+            <source src="https://www.image2url.com/r2/default/videos/1792344330001-985aad39-d848-436e-ba53-9bb00617a884.mp4" type="video/mp4">
+        </video>
+
+        <!-- ✅ Background BUG: bisa ganti dengan video hacker/matrix -->
+        <video autoplay muted loop playsinline preload="auto" class="main-bg-video bg-bug" id="videoBug">
+            <source src="https://www.image2url.com/r2/default/videos/1792344330001-985aad39-d848-436e-ba53-9bb00617a884.mp4mp4" type="video/mp4">
+        </video>
+
+        <div class="main-overlay"></div>
+        <div class="main-grid"></div>
+
+        <div class="header">
+            <h1>AXELL MARKET ID</h1>
+            <p>Nokos All Negara • Jasa Bug • QRIS Payment</p>
+        </div>
+
+        <!-- TAB — 3 tombol -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openPage('nokos', this)">
+                <i class="fas fa-sim-card"></i>
+                <span>Nokos</span>
+            </button>
+            <button class="tab-btn" onclick="openPage('qris', this)">
+                <i class="fas fa-qrcode"></i>
+                <span>QRIS</span>
+            </button>
+            <button class="tab-btn" onclick="openPage('bug', this)">
+                <i class="fas fa-bug"></i>
+                <span>Jasa Bug</span>
+            </button>
+        </div>
+
+        <div class="content-wrapper">
+
+            <!-- ================= HALAMAN 1: NOKOS ================= -->
+            <div id="nokos" class="page active">
+                <div class="info-banner">
+                    <i class="fas fa-globe"></i>
+                    <div>Nokos ready all negara • Proses cepat • Garansi 100%</div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇮🇩</span> INDONESIA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Shopee</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Indonesia" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇲🇾</span> MALAYSIA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Shopee</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 8.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Malaysia" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇸🇬</span> SINGAPORE</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 15.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Singapore" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇹🇭</span> THAILAND</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Line</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Thailand" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇻🇳</span> VIETNAM</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 9.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Vietnam" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇵🇭</span> PHILIPPINES</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Philippines" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇮🇳</span> INDIA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Shopee</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 12.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20India" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇺🇸</span> USA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Discord</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 15.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20USA" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇬🇧</span> UNITED KINGDOM</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 15.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20UK" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇨🇦</span> CANADA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 15.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Canada" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇯🇵</span> JAPAN</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Line</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 18.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Japan" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇰🇷</span> SOUTH KOREA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span><span>Kakao</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 19.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Korea" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇩🇪</span> GERMANY</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 16.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Germany" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇫🇷</span> FRANCE</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 16.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20France" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇧🇷</span> BRAZIL</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 35.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Brazil" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇷🇺</span> RUSSIA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 12.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Russia" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><span class="flag">🇦🇺</span> AUSTRALIA</div>
+                        <span class="status-badge">READY</span>
+                    </div>
+                    <div class="nokos-detail"><span>WhatsApp</span><span>Telegram</span></div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>HARGA</small>Rp 16.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Nokos%20Australia" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <div class="info-banner" style="margin-top:20px;">
+                    <i class="fas fa-search"></i>
+                    <div>Belum nemu negara yang kamu cari? <strong>Chat admin</strong> — kami punya stok negara lain!</div>
+                </div>
+            </div>
+
+            <!-- ================= HALAMAN 2: QRIS ================= -->
+            <div id="qris" class="page">
+                <div class="qris-box">
+                    <div class="qris-title">QRIS PAYMENT</div>
+                    <div class="qris-sub">Scan & Bayar • All Payment</div>
+                    <div class="qr-frame">
+                        <img src="https://i.imgur.com/jc95nyK.jpeg" alt="QRIS AXELL MARKET ID">
+                    </div>
+                    <div class="payment-methods">
+                        <span>DANA</span><span>OVO</span><span>GOPAY</span>
+                        <span>BCA</span><span>SHOPEEPAY</span><span>LINKAJA</span>
+                    </div>
+                </div>
+
+                <div class="instruction">
+                    <strong>Cara Pembayaran:</strong><br>
+                    1. Screenshot / scan QR di atas<br>
+                    2. Bayar sesuai total order<br>
+                    3. Screenshot bukti transfer<br>
+                    4. Kirim ke WhatsApp admin<br>
+                    5. Pesanan langsung diproses ⚡
+                </div>
+
+                <a class="confirm-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20sudah%20bayar%20via%20QRIS%2C%20ini%20bukti%20transfernya" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Konfirmasi Pembayaran
+                </a>
+            </div>
+
+            <!-- ================= HALAMAN 3: JASA BUG ================= -->
+            <div id="bug" class="page">
+                <div class="info-banner">
+                    <i class="fas fa-bug" style="color:#6dff8f; text-shadow: 0 0 12px #6dff8f;"></i>
+                    <div>Jasa Bug / Report • Semua Sosmed • Harga per Nomor</div>
+                </div>
+
+                <!-- BUG WHATSAPP -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-whatsapp" style="color:#25D366; font-size:20px;"></i> BUG WHATSAPP</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam Call</span><span>Spam OTP</span><span>Blank</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20WHATSAPP%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG INSTAGRAM -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-instagram" style="color:#E1306C; font-size:20px;"></i> BUG INSTAGRAM</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Hackback</span><span>Spam DM</span><span>Down</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20INSTAGRAM%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG TIKTOK -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-tiktok" style="color:#fff; font-size:20px;"></i> BUG TIKTOK</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam</span><span>Down Akun</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20TIKTOK%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG FACEBOOK -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-facebook" style="color:#1877F2; font-size:20px;"></i> BUG FACEBOOK</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam</span><span>Down Akun</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20FACEBOOK%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG TELEGRAM -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-telegram" style="color:#229ED9; font-size:20px;"></i> BUG TELEGRAM</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam</span><span>Down Akun</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20TELEGRAM%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG SMS / OTP -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fas fa-sms" style="color:#FFD700; font-size:20px;"></i> BUG SMS / OTP</div>
+                        <span class="status-badge hot">HOT</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Spam OTP</span><span>Spam SMS</span><span>Flood</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20SMS%2FOTP%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG WHATSAPP BUSINESS -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fab fa-whatsapp" style="color:#25D366; font-size:20px;"></i> BUG WA BUSINESS</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam</span><span>Down Akun</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20WA%20BUSINESS%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- BUG SHOPEE -->
+                <div class="nokos-card">
+                    <div class="nokos-header">
+                        <div class="nokos-title"><i class="fas fa-shopping-bag" style="color:#EE4D2D; font-size:20px;"></i> BUG SHOPEE</div>
+                        <span class="status-badge bug">READY</span>
+                    </div>
+                    <div class="nokos-detail">
+                        <span>Report</span><span>Spam</span><span>Down Toko</span>
+                    </div>
+                    <div class="nokos-footer">
+                        <div class="price"><small>PER NOMOR</small>Rp 10.000</div>
+                        <a class="order-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20order%20Jasa%20BUG%20SHOPEE%20(Rp%2010.000%2Fnomor)" target="_blank"><i class="fab fa-whatsapp"></i> Order</a>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="info-banner" style="margin-top:20px;">
+                    <i class="fas fa-shield-alt" style="color:#6dff8f; text-shadow: 0 0 12px #6dff8f;"></i>
+                    <div>Butuh jasa bug lain atau paket custom? <strong>Chat admin</strong> — harga nego!</div>
+                </div>
+
+                <a class="confirm-btn" href="https://wa.me/6285601099994?text=Halo%20Admin%20AXELL%20MARKET%20ID%2C%20saya%20mau%20tanya%20soal%20Jasa%20Bug" target="_blank" style="margin-top:10px;">
+                    <i class="fab fa-whatsapp"></i> Chat Admin Jasa Bug
+                </a>
+            </div>
+        </div>
+
+        <a class="float-wa" href="https://wa.me/6285601099994" target="_blank" title="Chat Admin">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        /* ===== SAPAAN & JAM ===== */
+        function updateRealtime() {
+            const now = new Date();
+            const hour = now.getHours();
+            let salam = "Malam", emoji = "🌙";
+            if (hour >= 4 && hour < 11)       { salam = "Pagi"; emoji = "🌅"; }
+            else if (hour >= 11 && hour < 15) { salam = "Siang"; emoji = "☀️"; }
+            else if (hour >= 15 && hour < 18) { salam = "Sore"; emoji = "🌇"; }
+
+            document.getElementById('greetingTime').textContent = salam;
+            document.getElementById('clockEmoji').textContent = emoji;
+
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('liveClock').textContent = `${h}:${m}:${s}`;
+        }
+        updateRealtime();
+        setInterval(updateRealtime, 1000);
+
+        /* ===== TOGGLE BACKGROUND ===== */
+        const BG_KEY = 'axell_bg_state';
+        const mainApp = document.getElementById('mainApp');
+        const bgToggleBtn = document.getElementById('bgToggleBtn');
+        const bgToggleIcon = document.getElementById('bgToggleIcon');
+        const bgToggleText = document.getElementById('bgToggleText');
+        const videoNokos = document.getElementById('videoNokos');
+        const videoQris  = document.getElementById('videoQris');
+        const videoBug   = document.getElementById('videoBug');
+
+        function getVideoByPage(page) {
+            if (page === 'qris') return videoQris;
+            if (page === 'bug')  return videoBug;
+            return videoNokos;
+        }
+
+        function setBgState(isOn, playVideos = true) {
+            if (isOn) {
+                mainApp.classList.remove('bg-off');
+                bgToggleBtn.classList.add('on');
+                bgToggleBtn.classList.remove('off');
+                bgToggleIcon.className = 'fas fa-eye';
+                bgToggleText.textContent = 'BG ON';
+                if (playVideos) {
+                    const v = getVideoByPage(mainApp.getAttribute('data-page'));
+                    if (v) v.play().catch(()=>{});
+                }
+            } else {
+                mainApp.classList.add('bg-off');
+                bgToggleBtn.classList.remove('on');
+                bgToggleBtn.classList.add('off');
+                bgToggleIcon.className = 'fas fa-eye-slash';
+                bgToggleText.textContent = 'BG OFF';
+                if (videoNokos) videoNokos.pause();
+                if (videoQris)  videoQris.pause();
+                if (videoBug)   videoBug.pause();
+            }
+            try { localStorage.setItem(BG_KEY, isOn ? '1' : '0'); } catch(e){}
+        }
+
+        function toggleBg() {
+            const isCurrentlyOn = !mainApp.classList.contains('bg-off');
+            setBgState(!isCurrentlyOn);
+        }
+
+        (function loadBgState() {
+            let saved = '1';
+            try { saved = localStorage.getItem(BG_KEY) || '1'; } catch(e){}
+            setBgState(saved === '1', false);
+        })();
+
+        /* ===== MASUK KE MENU ===== */
+        function enterApp() {
+            const welcome = document.getElementById('welcomeScreen');
+            const welcomeVideo = document.getElementById('welcomeVideo');
+
+            welcome.classList.add('hidden');
+            mainApp.classList.add('show');
+
+            if (!mainApp.classList.contains('bg-off')) {
+                const v = getVideoByPage(mainApp.getAttribute('data-page'));
+                if (v) { v.currentTime = 0; v.play().catch(()=>{}); }
+            }
+
+            setTimeout(() => { if (welcomeVideo) welcomeVideo.pause(); }, 1000);
+        }
+
+        /* ===== GANTI TAB ===== */
+        function openPage(pageName, btnEl) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(pageName).classList.add('active');
+            if (btnEl) btnEl.classList.add('active');
+
+            mainApp.setAttribute('data-page', pageName);
+
+            // Play video yang terlihat (kalau BG ON)
+            if (!mainApp.classList.contains('bg-off')) {
+                const v = getVideoByPage(pageName);
+                if (v) v.play().catch(()=>{});
+            }
+
+            document.querySelector('.content-wrapper').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ===== AUTOPLAY AWAL ===== */
+        window.addEventListener('load', () => {
+            if (!mainApp.classList.contains('bg-off')) {
+                if (videoNokos) videoNokos.play().catch(() => {});
+                if (videoQris)  videoQris.play().catch(() => {});
+                if (videoBug)   videoBug.play().catch(() => {});
+            }
+        });
+    </script>
+
+</body>
+</html>
